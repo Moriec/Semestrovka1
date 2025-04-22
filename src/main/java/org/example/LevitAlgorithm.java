@@ -17,7 +17,7 @@ public class LevitAlgorithm {
         // 2. `P` - множество "обработанных" вершин
         // 3. Вершины, не принадлежащие `Q` или `P` считаются "неизвестными"
 
-        Set<Integer> Q = new HashSet<>(); // Очередь для обработки
+        Deque<Integer> Q = new LinkedList<>(); // Очередь для обработки
         Set<Integer> P = new HashSet<>(); // Вершины, расстояния до которых уже посчитаны
         Q.add(startNode); // Начинаем с начальной вершины
 
@@ -43,7 +43,7 @@ public class LevitAlgorithm {
                             Q.add(v); // Если v вообще не посещалась
                         } else if (P.contains(v)) {
                             P.remove(v); // v переходит из P в Q
-                            Q.add(v);
+                            Q.addFirst(v);
                         }
                     }
                 }
@@ -63,8 +63,8 @@ public class LevitAlgorithm {
 
         int[][] graph = {
                 {0, 2, 0, 1},
-                {2, 0, 3, 0},
-                {0, 3, 0, 4},
+                {2, 0, -3, 0},  // Отрицательное ребро
+                {0, 3, 0, 4},  // Отрицательное ребро
                 {1, 0, 4, 0}
         };
 
