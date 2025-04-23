@@ -26,7 +26,7 @@ public class LevitAlgorithm {
             middleResultTime /= 100;
             middleResultIteration /= 100;
 
-            System.out.println(i + " Время: " + middleResultTime + " Итерации: " + middleResultIteration);
+            System.out.println(i + "," + middleResultTime + "," + middleResultIteration);
         }
     }
 
@@ -96,7 +96,7 @@ public class LevitAlgorithm {
 
         long startTime = System.nanoTime();
 
-        LevitAlgorithmExperiment.LevitResult result = levit(graph, startNode);
+        LevitAlgorithm.LevitResult result = levit(graph, startNode);
 
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
@@ -120,7 +120,7 @@ public class LevitAlgorithm {
     }
 
 
-    public static LevitAlgorithmExperiment.LevitResult levit(int[][] graph, int startNode) {
+    public static LevitAlgorithm.LevitResult levit(int[][] graph, int startNode) {
         int n = graph.length;
         int[] dist = new int[n];
         Arrays.fill(dist, INF);
@@ -167,6 +167,6 @@ public class LevitAlgorithm {
             P.add(u); // Вершина u обработана
         }
 
-        return new LevitAlgorithmExperiment.LevitResult(dist, countIteration); // Возвращаем данные для теста
+        return new LevitAlgorithm.LevitResult(dist, countIteration); // Возвращаем данные для теста
     }
 }
